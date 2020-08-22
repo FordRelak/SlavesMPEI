@@ -1,0 +1,14 @@
+﻿!{
+	1. .AddErrorDescriber<RussianIdentityErrorDescriber>() //Добавить поддрежку мультиязыков!!!
+}
+
+{
+	Надо сделать форму заказов
+}
+
+/Home
+	/Index
+		форма для записи
+/Account
+	/Login
+	/Register

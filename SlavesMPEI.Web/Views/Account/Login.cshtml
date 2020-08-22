@@ -1,0 +1,29 @@
+﻿@model LoginViewModel
+<section>
+	<div>
+		<div asp-validation-summary="ModelOnly"></div>
+		<form asp-area="" asp-controller="Account" asp-action="Login">
+			<div>
+				<label asp-for="Name"></label>
+				<input asp-for="Name" />
+				<span asp-validation-for="Name"></span>
+			</div>
+			<div>
+				<label asp-for="Password"></label>
+				<input asp-for="Password" />
+				<span asp-validation-for="Password"></span>
+			</div>
+			<div>
+				<label asp-for="IsPersistent"></label>
+				<input asp-for="IsPersistent" />
+				<span asp-validation-for="IsPersistent"></span>
+			</div>
+			<div>
+				<input type="submit" value="Войти" />
+			</div>
+		</form>
+	</div>
+	<div>
+		<a asp-area="" asp-controller="Account" asp-action="Register" asp-route-returnUrl="@ViewData["returnUrl"]">Регистрация</a>
+	</div>
+</section>
