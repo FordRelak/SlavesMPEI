@@ -89,8 +89,7 @@ namespace SlavesMPEI.Web.Controllers.Account
 
         #endregion Register
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        [HttpGet]
         public async Task<IActionResult> LogoutAsync()
         {
             // удаляем аутентификационные куки
