@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using SlavesMPEI.Domain.Entities;
 using SlavesMPEI.Infrastructure.Extenshions;
 using SlavesMPEI.Web.Models.ViewModels;
 
@@ -8,10 +9,10 @@ namespace SlavesMPEI.Web.Controllers.Account
 {
     public class AccountController : Controller
     {
-        private readonly UserManager<IdentityUser> userManager; //Менеджер пользователей
-        private readonly SignInManager<IdentityUser> signInManager; //Менеджер входа
+        private readonly UserManager<User> userManager; //Менеджер пользователей
+        private readonly SignInManager<User> signInManager; //Менеджер входа
 
-        public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
+        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
@@ -65,7 +66,7 @@ namespace SlavesMPEI.Web.Controllers.Account
                 var user = await userManager.FindByNameAsync(model.Name);   //Ищем пользователя по имени
                 if (user is null)
                 {
-                    var result = await userManager.CreateAsync(new IdentityUser(model.Name), model.Password);   //Создаем пользователя
+                    var result = await userManager.CreateAsync(new User(model.Name), model.Password);   //Создаем пользователя
                     if (result.Succeeded)
                     {
                         await signInManager.PasswordSignInAsync(model.Name, model.Password, model.IsPersistent, false); //Входим в систему

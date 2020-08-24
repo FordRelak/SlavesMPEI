@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SlavesMPEI.Domain;
+using SlavesMPEI.Domain.Entities;
 using SlavesMPEI.Infrastructure.ErrorDescribers;
 using SlavesMPEI.Web.Services;
 
@@ -34,7 +35,7 @@ namespace SlavesMPEI.Web
 
             #region Identity
 
-            services.AddIdentity<IdentityUser, IdentityRole>()
+            services.AddIdentity<User, IdentityRole>()
                 .AddEntityFrameworkStores<AppDbContext>()       //Храним в AppDbContext
                 .AddErrorDescriber<RussianIdentityErrorDescriber>() //Добавить поддрежку мультиязыков!!!
                 .AddDefaultTokenProviders();

@@ -1,1 +1,27 @@
-﻿
+﻿@model OrderViewModel
+<section class="container">
+	<div>
+		<form asp-area="" asp-controller="Home" asp-action="Index" method="post" asp-antiforgery="true">
+			<div asp-validation-summary="ModelOnly"></div>
+			<div>
+				<label asp-for="Subject"></label>
+				<input asp-for="Subject" />
+			</div>
+			<div>
+				<label asp-for="ProgLang"></label>
+				<select asp-for="ProgLang" asp-items="Html.GetEnumSelectList<ProgLang>()"></select>
+			</div>
+			<div>
+				<label asp-for="Task"></label>
+				<textarea asp-for="Task"></textarea>
+			</div>
+			<div>
+				<label asp-for="DeadLine"></label>
+				<input asp-for="DeadLine" />
+			</div>
+			<div>
+				<input type="submit" value="Сохранить" />
+			</div>
+		</form>
+	</div>
+</section>

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using SlavesMPEI.Web.Models.ViewModels;
 
 namespace SlavesMPEI.Web.Controllers.Home
 {
@@ -10,9 +11,22 @@ namespace SlavesMPEI.Web.Controllers.Home
         {
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
-            return View();
+            return View(new OrderViewModel());
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Index(OrderViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                
+            }
+
+            return View(model);
         }
     }
 }
