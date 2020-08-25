@@ -11,7 +11,7 @@ namespace SlavesMPEI.Domain.Entities
         /// <summary>
         /// Идентификатор заказа
         /// </summary>
-        public Guid Id { get; set; }
+        public string Id { get; set; }
 
         /// <summary>
         /// Идентификатор пользователя, которому принадлежит данный заказ
@@ -58,5 +58,10 @@ namespace SlavesMPEI.Domain.Entities
         [DisplayFormat(DataFormatString = "{0:dd'/'MM'/'yyyy}", ApplyFormatInEditMode = true)]
         [DataType(DataType.Date)]
         public DateTime DeadLine { get; set; }
+
+        /// <summary>
+        /// Путь к картинке задания
+        /// </summary>
+        public string ImagePath { get; set; }
     }
 }

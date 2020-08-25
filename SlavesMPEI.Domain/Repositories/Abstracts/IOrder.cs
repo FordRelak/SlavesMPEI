@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using SlavesMPEI.Domain.Entities;
 
 namespace SlavesMPEI.Domain.Repositories.Abstracts
@@ -8,14 +9,34 @@ namespace SlavesMPEI.Domain.Repositories.Abstracts
     /// </summary>
     public interface IOrder
     {
+        /// <summary>
+        /// Добавить заказ
+        /// </summary>
+        /// <param name="order">Заказ</param>
+        /// <returns></returns>
         Task AddOrderAsync(Order order);
-
+        /// <summary>
+        /// Удалить заказ
+        /// </summary>
+        /// <param name="order">Заказ</param>
+        /// <returns></returns>
         Task DeleteOrderAsync(Order order);
-
-        Task<Order> GetOrdersAsync();
-
+        /// <summary>
+        /// Возвращает все заказы
+        /// </summary>
+        /// <returns></returns>
+        Task<IList<Order>> GetOrdersAsync();
+        /// <summary>
+        /// Возвращает заказ по его id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         Task<Order> GetOrderByIdAsync(string id);
-
-        Task<Order> GetUserOrdersAsync(string username);
+        /// <summary>
+        /// Возвращает заказы пользователя
+        /// </summary>
+        /// <param name="username">Имя пользователя</param>
+        /// <returns></returns>
+        Task<IList<Order>> GetUserOrdersAsync(string username);
     }
 }

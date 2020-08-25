@@ -9,6 +9,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SlavesMPEI.Domain;
 using SlavesMPEI.Domain.Entities;
+using SlavesMPEI.Domain.Repositories.Abstracts;
+using SlavesMPEI.Domain.Repositories.EF;
 using SlavesMPEI.Infrastructure.ErrorDescribers;
 using SlavesMPEI.Web.Services;
 
@@ -29,9 +31,15 @@ namespace SlavesMPEI.Web
 
             #region DataBase
 
-            services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Config.ConnectionString));
+            services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Config.ConnectionString, x => x.MigrationsAssembly("SlavesMPEI.Web")));
 
             #endregion DataBase
+
+            #region DI
+
+            services.AddTransient<IOrder, OrderRepository>();
+
+            #endregion DI
 
             #region Identity
 

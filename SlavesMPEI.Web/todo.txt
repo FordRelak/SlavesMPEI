@@ -1,10 +1,12 @@
 ﻿!{
-	1. .AddErrorDescriber<RussianIdentityErrorDescriber>() //Добавить поддрежку мультиязыков!!!
+	1. .AddErrorDescriber<RussianIdentityErrorDescriber>() //Добавить поддержку мультиязыков!!!
 }
 
 {
 	Надо сделать форму заказов
 	бд заказы и тд
+	Миграции не работают
+	Картинка не грузится в IFromFile
 }
 
 /Home
