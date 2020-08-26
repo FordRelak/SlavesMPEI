@@ -1,20 +1,27 @@
 ﻿<section>
 	@if (User.Identity.IsAuthenticated)
 	{
-		<nav class="navbar navbar-expand-sm navbar-light bg-light">
+		<nav class="navbar navbar-expand-sm navbar-light bg-light mb-3">
 			<button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<div class="navbar-nav d-flex justify-content-between">
+			<div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
+				<div class="navbar-nav">
 					<a class="nav-link"
-					   asp-area="" asp-controller="Account" asp-action="Logout">Профиль</a>
-					<a class="nav-link"
-					   asp-area="" asp-controller="Account" asp-action="Logout">Выйти</a>
+					   asp-area="" asp-controller="" asp-action="">Профиль</a>
+				</div>
+				<div class="navbar-nav">
+					<div>
+						<div class="d-flex">
+							<span class="nav-link d-none d-sm-block" style="cursor:default">@User.Identity.Name,</span>
+							<a class="nav-link" asp-area="" asp-controller="Account" asp-action="Logout">Выйти</a>
+						</div>
+					</div>
 				</div>
 			</div>
-		</nav>}
+		</nav>
+	}
 	else
 	{
 		//Пока хз что здесь сделать, может и ничего...

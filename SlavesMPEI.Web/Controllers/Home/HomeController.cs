@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
@@ -43,7 +44,7 @@ namespace SlavesMPEI.Web.Controllers.Home
                 {
                     var imagePath = string.Empty;
                     if (model.Image != null)
-                        imagePath = await UploadFileAsync(model, model.Image);
+                        imagePath = await UploadFileAsync(model.UserName, model.Image);
 
                     var order = new Order
                     {
@@ -65,13 +66,16 @@ namespace SlavesMPEI.Web.Controllers.Home
                     ModelState.AddModelError(string.Empty, "Выберите картинку или напишите задание");
                 }
             }
-
+            //if (model.DeadLine == default)
+            //{
+            //    ModelState.AddModelError("DeadLine", "Выберите дату дедлайна");
+            //}
             return View(model);
         }
 
-        private async Task<string> UploadFileAsync(OrderViewModel model, IFormFile image)
+        private async Task<string> UploadFileAsync(string userName, IFormFile image)
         {
-            var uniqueFileName = model.UserName + "_" + Guid.NewGuid().ToString();
+            var uniqueFileName = userName + "_" + Guid.NewGuid().ToString();
             var folder = Path.Combine(webHostEnvironment.WebRootPath, "images");
             var filePath = Path.Combine(folder, uniqueFileName);
             using (var stream = new FileStream(filePath, FileMode.Create))

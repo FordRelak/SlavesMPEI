@@ -31,7 +31,7 @@ namespace SlavesMPEI.Web
 
             #region DataBase
 
-            services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Config.ConnectionString, x => x.MigrationsAssembly("SlavesMPEI.Web")));
+            services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Config.ConnectionString));
 
             #endregion DataBase
 
@@ -96,8 +96,9 @@ namespace SlavesMPEI.Web
                 app.UseDeveloperExceptionPage();
             }
             else
-            {
+            {                
                 app.UseExceptionHandler("/Error");
+                app.UseHsts();
             }
             app.UseStaticFiles(); //Использовать статические файлы
             app.UseRouting();

@@ -1,30 +1,31 @@
 ﻿@model OrderViewModel
 <section class="container">
-	<div>
-		<form asp-area="" asp-controller="Home" asp-action="Index" method="post" asp-antiforgery="true">
-			<div asp-validation-summary="ModelOnly"></div>
-			<div>
-				<label asp-for="Subject"></label>
-				<input asp-for="Subject" />
+	<div class="col-sm-12 d-sm-flex justify-content-center align-content-center">
+		<form asp-area="" asp-controller="Home" asp-action="Index" method="post" asp-antiforgery="true" enctype="multipart/form-data">
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			<div class="form-group">
+				<label asp-for="Subject" class="form-label p-1 bg-secondary rounded text-white"></label>
+				<input asp-for="Subject" class="form-control"/>
 			</div>
-			<div>
-				<label asp-for="ProgLang"></label>
-				<select asp-for="ProgLang" asp-items="Html.GetEnumSelectList<ProgLang>()"></select>
+			<div class="form-group">
+				<label asp-for="ProgLang" class="form-label p-1 bg-secondary rounded text-white"></label>
+				<select asp-for="ProgLang" asp-items="Html.GetEnumSelectList<ProgLang>()" class="form-control"></select>
 			</div>
-			<div>
-				<label asp-for="Task"></label>
-				<textarea asp-for="Task"></textarea>
+			<div class="form-group">
+				<label asp-for="Task" class="form-label p-1 bg-secondary rounded text-white"></label>
+				<textarea asp-for="Task" class="form-control"></textarea>
 			</div>
-			<div>
-				<label asp-for="DeadLine"></label>
-				<input asp-for="DeadLine" />
+			<div class="form-group">
+				<label asp-for="DeadLine"class="form-label p-1 bg-secondary rounded text-white"></label>
+				<input asp-for="DeadLine" class="form-control"/>
+				<span asp-validation-for="DeadLine"></span>
 			</div>
-			<div>
-				<label asp-for="Image"></label>
-				<input asp-for="Image" />
+			<div class="form-group">
+				<label asp-for="Image" class="form-label p-1 bg-secondary rounded text-white"></label>
+				<input asp-for="Image"class="form-control-file btn btn-light"/>
 			</div>
-			<div>
-				<input type="submit" value="Сохранить" />
+			<div class="form-group">
+				<input type="submit" value="Сохранить" class="btn btn-outline-light w-100" />
 			</div>
 		</form>
 	</div>

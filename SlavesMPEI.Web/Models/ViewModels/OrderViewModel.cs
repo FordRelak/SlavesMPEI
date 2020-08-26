@@ -40,7 +40,7 @@ namespace SlavesMPEI.Web.Models.ViewModels
         [Display(Name = "Крайний срок выполения заказа")]
         [DisplayFormat(DataFormatString = "{0:dd'/'MM'/'yyyy}", ApplyFormatInEditMode = true)]
         [DataType(DataType.Date)]
-        public DateTime DeadLine { get; set; }
+        public DateTime? DeadLine { get; set; }
 
         /// <summary>
         /// Путь к картинке задания

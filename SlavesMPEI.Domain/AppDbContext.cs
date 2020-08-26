@@ -16,5 +16,12 @@ namespace SlavesMPEI.Domain
         {
 
         }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            base.OnConfiguring(optionsBuilder);
+            optionsBuilder.UseSqlServer("Data Source=88.135.50.215,1433; Initial Catalog=SlavesMPEIdb; User ID=Misha; Password=789xxx44XX; Encrypt=False; TrustServerCertificate=False; ApplicationIntent=ReadWrite; MultiSubnetFailover=False;"
+                ,b => b.MigrationsAssembly("SlavesMPEI.Domain"));
+        }
     }
 }
