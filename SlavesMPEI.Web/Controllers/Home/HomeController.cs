@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
@@ -46,13 +47,12 @@ namespace SlavesMPEI.Web.Controllers.Home
                     if (model.Image != null)
                         imagePath = await UploadFileAsync(model.UserName, model.Image);
 
-                    var order = new Order
+                    var order = new Order()
                     {
-                        CreateDate = DateTime.Now.Date,
                         DeadLine = model.DeadLine,
                         Id = Guid.NewGuid().ToString(),
                         ImagePath = imagePath,
-                        ProgLang = model.ProgLang,
+                        ProgLang = model.ProgLang.ToString(),
                         Subject = model.Subject,
                         Task = model.Task,
                         UserId = (await userManager.FindByNameAsync(model.UserName)).Id
@@ -76,8 +76,7 @@ namespace SlavesMPEI.Web.Controllers.Home
         private async Task<string> UploadFileAsync(string userName, IFormFile image)
         {
             var uniqueFileName = userName + "_" + Guid.NewGuid().ToString();
-            var folder = Path.Combine(webHostEnvironment.WebRootPath, "images");
-            var filePath = Path.Combine(folder, uniqueFileName);
+            var filePath = Path.Combine("wwwroot\\images", uniqueFileName);
             using (var stream = new FileStream(filePath, FileMode.Create))
             {
                 await image.CopyToAsync(stream);

@@ -2,4 +2,7 @@
 	background-image: url('../images/unknown.png');
 	background-repeat: no-repeat;
 	background-size: cover;
+	width: 100vw;
+	height: 100vh;
+	position: absolute;
 }
